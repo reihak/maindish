@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<div>
+  <a href="{% url 'app:index' %}">ホームに戻る</a>
+</div>
+
+<h2>{{ menu.title }}</h2>
+<div>
+  {{ menu.food_stuff | linebreaks | urlize }}
+</div>
+<div>
+  {{ menu.text | linebreaks | urlize }}
+</div>
+<a href="{{ menu.link }}"  target="_blank">link</a>
+
+<button><a class="btn" href="{% url 'app:edit_menu' menu.pk %}">編集</a></button>
+
+<form method="post" action="{% url 'app:delete_menu' menu.pk %}">{% csrf_token %}
+  <button class="btn" type="submit" onclick='return confirm("本当に削除しますか？");'>削除</button>
+</form>
+{% endblock %}

@@ -1,0 +1,37 @@
+
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<div>
+  <a href="{% url 'app:index' %}">ホームに戻る</a>
+</div>
+<form action="{% url 'app:weekly'  %}" method="POST">{% csrf_token %}
+  <button class="btn" type="submit" onclick='return confirm("新しく献立を組み立てます");'>献立作成</button>
+</form>
+
+<div class="dow">
+<span>{{week_list.0.0}}曜日</span>
+<a href="{% url 'app:detail' week_list.0.2 %}" class="menu-title">
+  {{ week_list.0.1 }}</a>
+</div>
+<div class="dow">
+<span>{{week_list.1.0}}曜日</span>
+<a href="{% url 'app:detail' week_list.1.2 %}" class="menu-title">
+  {{ week_list.1.1 }}</a>
+</div>
+<div class="dow">
+<span>{{week_list.2.0}}曜日</span>
+<a href="{% url 'app:detail' week_list.2.2 %}" class="menu-title">
+  {{ week_list.2.1 }}</a>
+</div>
+<div class="food_stuff_list">
+  <p>お買い物リスト</p>
+  <ul>
+    <li>{{week_list.0.3}}</li>
+    <li>{{week_list.1.3}}</li>
+    <li>{{week_list.2.3}}</li>
+  </ul>
+</div>
+
+{% endblock %}

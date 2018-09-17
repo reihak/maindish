@@ -1,0 +1,18 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Weekly MainDish</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'app/css/style.css' %}">
+</head>
+
+<body>
+  <h1>週間主菜（メインディッシュ）</h1>
+
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<a class="btn" href="{% url 'app:new_menu' %}">新規メニュー登録</a>
+<a class="btn" href="{% url 'app:weekly' %}">週間リスト</a>
+{% for menu in menus %}
+
+<a href="{% url 'app:detail' menu.id %}" class="menu-title">
+  <div>
+    {{ menu }}
+    <span class="updated_datetime">{{ menu.name }}</span>
+  </div>
+</a>
+{% endfor %}
+
+{% endblock %}

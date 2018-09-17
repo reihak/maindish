@@ -1,0 +1,34 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<div>
+  <a href="{% url 'app:index' %}">ホームに戻る</a>
+</div>
+
+<form action="{% url 'app:new_menu'  %}" method="POST">{% csrf_token %}
+  <table>
+    <tr>
+      <th>タイトル</th>
+      <td>{{ form.title }}</td>
+    </tr>
+    <tr>
+      <th>登録者名</th>
+      <td>{{ form.name }}</td>
+    </tr>
+    <tr>
+      <th>食材</th>
+      <td>{{ form.food_stuff }}</td>
+    </tr>
+    <tr>
+      <th>参考HP</th>
+      <td>{{ form.link }}</td>
+    </tr>
+    <tr>
+      <th>メモ</th>
+      <td>{{ form.text }}</td>
+    </tr>
+  </table>
+  <button class="btn" type="submit">保存</button>
+</form>
+{% endblock %}
